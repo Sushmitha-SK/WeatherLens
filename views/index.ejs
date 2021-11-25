@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather Lens</title>
+    <link rel="shortcut icon" href="images/icon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+</head>
+
+<body>
+    <!-- Header Section Starts -->
+    <header class="header">
+        <a href="#" class="logo">
+            <img src="/images/weather-lens-logo.png" width="150px" height="75px">
+        </a>
+    </header>
+
+    <!-- Header Section Ends -->
+
+    <!-- Search location section starts  -->
+    <div class="container">
+        <div class="video-container">
+            <video src="images/video-clouds.mp4" loop autoplay muted></video>
+        </div>
+
+        <form method="post" action="/">
+            <input type="text" name="city" id="cityname" placeholder="Enter a City" required class="box" /><br />
+            <input type="submit" class="submitbtn" value="Search Location" />
+            <!-- <button type="submit" name="button" class="submitbtn">Search Location</button> -->
+        </form>
+    </div>
+
+    <!-- Search location section ends -->
+
+    <!-- Weather details section starts  -->
+    <section class="weatherdetails" id="weatherdetails">
+        <%if( weather !== null){ %>
+        <div class="locationdata">
+            <p class="place"><%= place %></p>
+            <p class="datetime"><%= timezone %></p>
+        </div>
+        <div class="weather-container">
+            <div class="weather-data">
+                <div class="weather-data-header">
+                    <h3>Current Weather</h3>
+                </div>
+                <img src="<%= icon %>" alt="Weather-Icon" />
+                <!-- <p>Temperature In Degree:</p> -->
+                <p>Temperature</p>
+                <p class="temp-details"><%= temp %>°C/ <%= fahrenheit %>°F</p>
+                <p class="temp-details"><%= main %></p>
+            </div>
+
+            <div class="weather-data">
+                <div class="weather-data-header">
+                    <h3>Description</h3>
+                </div>
+                <p>Overall Description</p>
+                <p class="temp-details"><%= description %></p>
+                <p>Cloud Coverage</p>
+                <p class="temp-details"><%= clouds %>%</p>
+                <p>Visibility</p>
+                <p class="temp-details"><%= visibility %> meters</p>
+            </div>
+
+            <div class="weather-data">
+                <div class="weather-data-header">
+                    <h3>Additional Info</h3>
+                </div>
+                <p>Humidity</p>
+                <p class="temp-details"><%= humidity %> g.m-3</p>
+                <p>Pressure</p>
+                <p class="temp-details">↔ <%= pressure %> N·m−2</p>
+            </div>
+            <% } %> <% if(error !== null){ %>
+            <p style="font-size: 26px; text-align: center"><%= error %></p>
+            <% } %>
+        </div>
+    </section>
+    <!-- Weather deatils section ends -->
+</body>
+
+</html>
